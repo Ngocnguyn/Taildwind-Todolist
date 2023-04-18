@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: grey;
+    border-radius: 8px;
+    
+}
+
+@layer components{
+    .todo-item{
+        @apply w-full lg:h-[216px] h-[160px] border rounded-lg shadow-md flex justify-center
+    }
+    .todo-content{
+        @apply flex flex-col items-start p-0 gap-4 w-[85%] lg:h-[196px] h-full mt-4
+    }
+    .todo-content__top{
+        @apply flex flex-row justify-between p-0 gap-4 w-full h-[46px]
+    }
+    .todo-content__top-left{
+        @apply flex flex-col w-[70%] gap-2
+    }
+    .category{
+        @apply font-bold text-xs text-[#4D8EFF] underline
+    }
+    .title{
+        @apply box-border flex items-center font-bold text-base
+    }
+    .todo-content__top-right{
+        @apply flex flex-row items-end justify-end p-0 gap-[10px] h-[19px]
+    }
+    .todo-content__bottom{
+        @apply flex flex-col items-start lg:py-[22px] py-[10px] w-full h-[134px] gap-[10px]
+    }
+    .line{
+        @apply w-[80%] border bg-[#DBDBDB]
+    }
+    .substance{
+        @apply font-normal text-xs text-[#5A5C63]
+    }
+    .calendar{
+        @apply flex flex-row items-center p-0 w-[100px] h-4
+    }
+    .time{
+        @apply flex items-center font-normal text-xs
+    }    
+}
+.popup,
+.popup__edit{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+}
+.popup.active,
+.popup__edit.active{
+    opacity: 1;
+    display: flex;
+    transition: opacity 200ms ease-in-out;
+}
+.popup__form,
+.popup__form-edit{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    width: 380px;
+    padding: 20px 30px;
+    background: #fff;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
+    border-radius: 10px;
+}

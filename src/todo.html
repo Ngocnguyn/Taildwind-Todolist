@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+    defer
+    src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"
+    ></script>
+</head>
+<body style="justify-content: center; display: flex;">
+    <div class="container lg:w-[1280px] w-screen h-screen bg-white ">
+        <!-- Header -->
+        <div class="header flex lg:flex-row flex-col items-center w-full justify-between relative lg:top-[37px] gap-3">
+            <!-- Logo Frame -->
+            <div class="flex flex-col items-start p-0 gap-[5px] w-[172px]">
+                <img src="../img/logo.png" alt="" class="w-full h-[58px]">
+                <div class="flex flex-row items-start p-0 gap-[5px] w-full h-[23px] mt-[5px]">
+                    <div class="w-36 h-5 text-[#5a5c63]">Let’s get shit done!</div>
+                    <img src="../img/peace 1.png" alt="">
+                </div>
+            </div>
+            <!-- New task button -->
+            <div class="new__task flex flex-rowhover: cursor-pointer gap-[6px] h-5 relative lg:top-8">
+                <div class="">+</div>
+                <div class="text-[#5a5c63] text-base font-normal">New task</div>
+            </div>
+        </div>
+
+        <!-- Main -->
+        <div class="main flex lg:flex-row flex-col w-full mt-14 gap-11">
+            <!-- Todo -->
+            <div class="todo lg:w-[33%] w-full  ">
+                <!-- Name col -->
+                <div class="flex flex-row justify-between items-center p-0 bg-[#00A6DA] border rounded-md ">
+                    <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center text-center " >Todo</div>
+                    <div class="todo-count font-bold text-white bg-[#00CDDA] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center"></div>
+                </div>
+                <!-- Line -->
+                <div class="w-full border-[#00A6DA] h-0 border-[2px] mt-4 "></div>
+                <!-- List -->
+                <div class="containers todo-list w-full flex flex-col items-end p-0 gap-[22px] mt-[28px] overflow-y-scroll lg:h-screen  h-[220px]">
+                    
+   
+                    
+                    
+                </div>
+            </div>
+
+            
+            <!-- Doing -->
+            <div class="doing lg:w-[33%]">
+                <!-- Name col -->
+                <div class="flex flex-row justify-between items-center p-0 bg-[#CCAC038F] border rounded-md ">
+                    <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center  text-center " >Doing</div>
+                    <div class="doing-count font-bold text-white bg-[#dab700] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center"></div>
+                </div>
+                <!-- Line -->
+                <div class="w-full border-[#CCAC038F] h-0 border-[2px] mt-4 "></div>
+                <div class="containers doing-list w-full flex flex-col items-end p-0 gap-[22px] mt-[28px] overflow-y-scroll lg:h-screen  h-[220px]">
+                    
+   
+                    
+                    
+                </div>
+            </div>
+
+
+            <!-- Finished -->
+            <div class="finished lg:w-[33%]">
+                <!-- Name col -->
+                <div class="flex flex-row justify-between items-center p-0 bg-[#3BC057] border rounded-md ">
+                    <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center text-center " >Finished</div>
+                    <div class="finished-count font-bold text-white bg-[#69CE7E] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center"></div>
+                </div>
+                <!-- Line -->
+                <div class="w-full border-[#3BC057] h-0 border-[2px] mt-4 "></div>
+                <div class="containers finished-list w-full flex flex-col items-end p-0 gap-[22px] mt-[28px] overflow-y-scroll lg:h-screen  h-[220px]">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Form -->
+    <div class="popup">
+        <div class="popup__form">
+            <div class="close-btn absolute top-[10px] right-[10px]  cursor-pointer"><iconify-icon icon="ph:x"  width="24" height="24"></iconify-icon></div>
+            <form acction="submit" id="my-form">
+                <h2 class="text-center text-[#222] mt-[10px] mb-[20px] text-base font-bold">Add new todo</h2>
+                <input class="new-category block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="category" placeholder="Category Etc. Marketing" required>
+                <input class="new-title block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="title" placeholder="Title" required>
+                <input class="new-content block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="content" placeholder="Content" required> 
+                <button class="w-full h-10 border-none outline-none text-sm bg-[#222] text-[#f5f5f5] rounded-xl cursor-pointer mt-[20px]" type="submit">Submit</button> 
+            </form>
+        </div>
+    </div>
+    <!-- Edit -->
+    <div class="popup__edit">
+        <div class="popup__form-edit">
+            <div class="edit__close-btn absolute top-[10px] right-[10px]  cursor-pointer"><iconify-icon icon="ph:x"  width="24" height="24"></iconify-icon></div>
+            <form acction="submit" id="my-form__edit">
+                <h2 class="text-center text-[#222] mt-[10px] mb-[20px] text-base font-bold">Edit todo</h2>
+                <input class="edit-category block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="category__edit" value="" required>
+                <input class="edit-title block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="title__edit" value="" required>
+                <input class="edit-content block mt-5 w-full p-[10px] border-solid border-[#aaa] rounded-md" type="text" id="content__edit" value="" required>
+                <div class="radio-container flex flex-row gap-3">
+                    <input type="radio" name="options" value="todo" class="todo-value" required>
+                    <label for="todo">Todo</label>
+                    <input type="radio"name="options"  value="doing" class="doing-value" required>
+                    <label for="doing">Doing</label>
+                    <input type="radio" name="options" value="finished" class="finished-value" required>
+                    <label for="finished">Finished</label>
+                </div>
+                <button class="w-full h-10 border-none outline-none text-sm bg-[#222] text-[#f5f5f5] rounded-xl cursor-pointer mt-[20px]" type="submit">Save</button> 
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

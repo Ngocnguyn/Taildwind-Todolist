@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    
+</head>
+<script
+defer
+src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"
+></script>
+<style>
+    html{
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .doing{
+        background-color: rgba(204, 172, 3, 0.56);
+    }
+    .line-doing{
+        border-color: rgba(204, 172, 3, 0.56);
+    }
+    .todo-items,
+    .doing-items,
+    .finished-items{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0;
+        position: absolute;
+        width: 374px;
+        top: 218px;
+    }
+    .todo-items{
+        left: 52px;
+    }
+    .doing-items{
+        left: 472px;
+    }
+    .finished-items{
+        left: 891px;
+    }
+    .todo-item{
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+        width: 374px;
+        height: 216px;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 22px;
+    }
+    .todo-item__content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 16px;
+        width: 327px;
+        height: 196px;
+        position: absolute;
+        left: 24px;
+    }
+    .todo-item__content-top{
+        width: 327px;
+        height: 46px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+    }
+    .todo-item__content-top-left{
+        display: flex;
+        flex-direction: column;
+        width: 254px;
+        height: 46px;
+        box-sizing: border-box;
+        gap: 10px;
+    }
+    .todo-item__content-top-right{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0;
+    }
+    .category{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        color: #4D8EFF;
+        text-decoration-line: underline;
+    }
+    .title{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        color: #393939;
+    }
+    .todo-item__content-bottom{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px 0px 0px;
+        gap: 10px;
+        width: 327px;
+        height: 134px;
+    }
+    .line{
+        width: 253px;
+        height: 0px;
+        border: 1px solid #DBDBDB;
+    }
+    .substance{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 13px;
+        display: flex;
+        align-items: center;
+        color: #5A5C63;
+    }
+    .calendar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 5px;
+        width: 88px;
+        height: 16px;
+    }
+    .time{
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 13px;
+        display: flex;
+        align-items: center;
+        color: #5A5C63;
+    }
+</style>
+<body>
+    <div class="container relative w-[1280px]  bg-white">
+        <div class="header flex">
+            <div class="flex flex-col items-start p-0 gap-[5px] absolute w-[427px] h-[100px] left-[52px] top-[37px]">
+                <img src="../img/logo.png" alt="" class="w-[172px] h-[58px]">
+                <div class="flex flex-row items-start p-0 gap-[5px] w-[172px] h-[23px] mt-[5px]">
+                    <div class="w-36 h-5 text-[#5a5c63]">Let’s get shit done!</div>
+                    <img src="../img/peace 1.png" alt="">
+                </div>
+            </div>
+            <div class="new_task flex flex-row items-start p-0 gap-[6px] absolute w-24 h-5 left-[1147px] top-[97px] hover: cursor-pointer">
+                <div class="">+</div>
+                <div class="text-[#5a5c63] text-base">New task</div>
+            </div>
+        </div>        
+        <!-- Logo Frame -->
+        
+        <!-- New task button -->
+        
+        <!-- Todo -->
+        <div class="todo flex flex-row justify-between items-center p-0 absolute w-[376px] h-[34px] left-[50px] top-[140px] bg-[#00A6DA] border rounded-md">
+            <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center text-center " >Todo</div>
+            <div class="font-bold text-white bg-[#00CDDA] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center">3</div>
+        </div>
+        <!-- Line todo -->
+        <div class="absolute w-[374px] h-0 border-[2px] border-[#00A6DA] left-[52px] top-[190px] "></div>
+
+        <!-- Doing -->
+        <div class="doing flex flex-row justify-between items-center p-0 absolute w-[376px] h-[34px] left-[470px] top-[140px] border rounded-md">
+            <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center text-center " >Doing</div>
+            <div class="font-bold text-white bg-[#dab700] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center">3</div>
+        </div>
+        <!-- Line doing -->
+        <div class="line-doing absolute w-[374px] h-0 border-[2px] left-[472px] top-[190px] "></div>
+
+        <!-- Finished -->
+        <div class="finished flex flex-row justify-between items-center p-0 absolute w-[376px] h-[34px] left-[889px] top-[140px] bg-[#3BC057] border rounded-md">
+            <div class="text-white py-[7px] px-[9px] text-base font-bold w-10 h-5 flex items-center text-center " >Finished</div>
+            <div class="font-bold text-white bg-[#69CE7E] m-[7px] top-0 w-5 h-5 flex items-center text-center justify-center">3</div>
+        </div>
+        <!-- Line finished -->
+        <div class="absolute w-[374px] h-0 border-[2px] border-[#3BC057] left-[891px] top-[190px] "></div>
+        <!-- List todo -->
+        <div class="todo-items">
+            <!-- Item 1 -->
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- List Doing -->
+        <div class="doing-items">
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="finished-items">
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-item">
+                <div class="todo-item__content" >
+                    <!-- Top -->
+                    <div class="todo-item__content-top">
+                        <div class="todo-item__content-top-left">
+                            <div class="category">Marketing</div>
+                            <div class="title">Write SEO article for new product</div>
+                        </div>
+                        <div class="todo-item__content-top-right">
+                            <iconify-icon icon="ep:edit-pen" width="24" height="24"></iconify-icon>
+                            <iconify-icon icon="iconoir:trash" width="24" height="24"></iconify-icon>
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div class="todo-item__content-bottom">
+                        <div class="line "></div>
+                        <div class="substance">This is an existential moment for effective altruism and the rationalist community writ-large. </div>
+                        <div class="calendar">
+                            <iconify-icon icon="tabler:clock-hour-3" style="color: #5a5c63;" width="16" height="16"></iconify-icon>
+                            <div class="time">June 30, 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body> 
+</html>
